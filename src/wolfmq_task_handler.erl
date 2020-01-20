@@ -23,7 +23,6 @@ handle_message(Msg) ->
 execute({Module, Fun, Args}) ->
     try erlang:apply(Module, Fun, Args) of
         ok -> ok;
-        Err -> {error, Err};
         _ -> ok
     catch
         Class:Reason -> {exception, Class, Reason, erlang:get_stacktrace()}
@@ -31,7 +30,6 @@ execute({Module, Fun, Args}) ->
 execute({Fun, Args}) ->
     try erlang:apply(Fun, Args) of
         ok -> ok;
-        Err -> {error, Err};
         _ -> ok
     catch
         Class:Reason -> {exception, Class, Reason, erlang:get_stacktrace()}
@@ -39,7 +37,6 @@ execute({Fun, Args}) ->
 execute(Fun) when is_function(Fun) ->
     try Fun() of
         ok -> ok;
-        Err -> {error, Err};
         _ -> ok
     catch
         Class:Reason -> {exception, Class, Reason, erlang:get_stacktrace()}
