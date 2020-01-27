@@ -1,0 +1,25 @@
+-define(ERROR(Format, Args), begin _ = lager:error_unsafe(Format, Args), ok end).
+-define(ERROR(String), begin _ = lager:error_unsafe(String), ok end).
+-define(DEBUG(Format, Args), begin _ = lager:debug_unsafe(Format, Args), ok end).
+-define(DEBUG(String), begin _ = lager:debug_unsafe(String), ok end).
+-define(INFO(Format, Args), begin _ = lager:info_unsafe(Format, Args), ok end).
+-define(INFO(String), begin _ = lager:info_unsafe(String), ok end).
+-define(WARNING(Format, Args), begin _ = lager:warning_unsafe(Format, Args), ok end).
+-define(WARNING(String), begin _ = lager:warning_unsafe(String), ok end).
+-define(NOTICE(Format, Args), begin _ = lager:notice_unsafe(Format, Args), ok end).
+-define(NOTICE(String), begin _ = lager:notice_unsafe(String), ok end).
+-define(CRITICAL(Format, Args), begin _ = lager:critical_unsafe(Format, Args), ok end).
+-define(CRITICAL(String), begin _ = lager:critical_unsafe(String), ok end).
+-define(ALERT(Format, Args), begin _ = lager:alert_unsafe(Format, Args), ok end).
+-define(ALERT(String), begin _ = lager:alert_unsafe(String), ok end).
+-define(EMERGENCY(Format, Args), begin _ = lager:emergency_unsafe(Format, Args), ok end).
+-define(EMERGENCY(String), begin _ = lager:emergency_unsafe(String), ok end).
+
+-define(ERR(Format, Args), ?ERROR(Format, Args)).
+-define(ERR(String), ?ERROR(String)).
+-define(DBG(Format, Args), ?DEBUG(Format, Args)).
+-define(DBG(String), ?DEBUG(String)).
+-define(WARN(Format, Args), ?WARNING(Format, Args)).
+-define(WARN(String), ?WARNING(String)).
+
+-compile([{parse_transform, lager_transform}, {lager_truncation_size, 131072}]).
